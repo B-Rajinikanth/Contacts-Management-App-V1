@@ -1,4 +1,4 @@
-let contactList = [];
+let contactList = JSON.parse(localStorage.getItem('contacts')) || [];
 
 displayAllContacts();
 
@@ -15,6 +15,7 @@ function addContact() {
     const newConatct = {name, phone, email};
 
     contactList.push(newConatct);
+    localStorage.setItem('contacts', JSON.stringify(contactList));
     displayAllContacts();
 
     console.log('All Contacts:', contactList);
