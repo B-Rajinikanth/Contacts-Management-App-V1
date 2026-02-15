@@ -30,7 +30,7 @@ function displayAllContacts() {
     const allContactsContainer = document.getElementById('allContactsContainer');
     allContactsContainer.innerHTML = '';
     
-    contactList.forEach((contact)=>{
+    contactList.forEach((contact, index)=>{
         // Creating new div
         const contactCard = document.createElement('div');
         contactCard.classList.add('contact-card');
@@ -61,6 +61,8 @@ function displayAllContacts() {
         const editButton = document.createElement('button');
         editButton.textContent = 'Edit';
         editButton.classList.add('editBtn')
+        editButton.addEventListener('click', ()=>editContact(index));
+
         const deleteButton = document.createElement('button');
         deleteButton.textContent = 'Delete';
         deleteButton.classList.add('deleteBtn')
@@ -74,4 +76,10 @@ function displayAllContacts() {
 
         allContactsContainer.appendChild(contactCard);
     })
+}
+
+function editContact(index) {
+    document.getElementById('nameInput').value = contactList[index].name;
+    document.getElementById('phoneInput').value = contactList[index].phone;
+    document.getElementById('emailInput').value = contactList[index].email;
 }
